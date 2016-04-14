@@ -2,7 +2,7 @@ var prezis = require(__dirname+'/prezis.json');
 
 //Send all the prezis in the JSON file
 module.exports.getAllPrezis = function(req, res, next) {
-    res.send(prezis);
+    res.json({prezi: prezis});
 };
 
 //Loop over each of the prezis in the JSON file and look for matches against the title property
@@ -13,5 +13,5 @@ module.exports.searchPrezis = function(req, res, next) {
             _matches.push(prezis[i]);
         }
     }
-    res.send(_matches);
+    res.json({prezi: _matches});
 };
