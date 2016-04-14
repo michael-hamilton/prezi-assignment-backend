@@ -1,17 +1,17 @@
 var prezis = require(__dirname+'/prezis.json');
 
 //Send all the prezis in the JSON file
-module.exports.getAllPrezis = function(req, res, next) {
-    res.json({prezi: prezis});
-};
-
-//Loop over each of the prezis in the JSON file and look for matches against the title property
-module.exports.searchPrezis = function(req, res, next) {
-    var _matches = [];
-    for(var i = 0; i < prezis.length; i++) {
-        if(prezis[i].title == req.query.title) {
-            _matches.push(prezis[i]);
+module.exports.getPrezis = function(req, res, next) {
+    if(req.query.title) {
+        var _matches = [];
+        for(var i = 0; i < prezis.length; i++) {
+            if(prezis[i].title.indexOf(req.query.title) != -1) {
+                _matches.push(prezis[i]);
+            }
         }
+        res.json({prezi: _matches});
     }
-    res.json({prezi: _matches});
+    else {
+        res.json({prezi: prezis});
+    }
 };

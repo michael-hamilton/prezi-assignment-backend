@@ -10,7 +10,6 @@ app.use(function (res, res, next) {
     next();
 });
 
-app.get('/prezis', controller.getAllPrezis);
-app.get('/prezis/search', controller.searchPrezis);
+app.get('/prezis', controller.getPrezis);
 
 app.listen(3000);
