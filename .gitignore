@@ -1,0 +1,5 @@
+# Package Manager Folders
+node_modules
+
+# Editor Folders
+.idea
