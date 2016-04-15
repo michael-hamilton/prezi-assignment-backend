@@ -1,8 +1,8 @@
 var express = require('express'),
     app = express(),
-    controller = require('./controller'),
-    port = process.env.port || 3000;
+    controller = require('./controller');
 
+app.set('port', (process.env.PORT || 5000));
 app.get('/prezis', controller.getPrezis);
 
-app.listen(port);
+app.listen(app.get('port'));
